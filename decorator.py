@@ -14,6 +14,6 @@ def addToObjectList(func):
     def wrapper(*args, **kwargs):
         result = func(*args, **kwargs)
         if result is not None and appReference is not None:
-            appReference.add_object(result)
+            appReference.addObject(result)
         return result
     return wrapper

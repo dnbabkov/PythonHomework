@@ -25,26 +25,23 @@ class GasStation:
                     if amount <= self.fuelsAndAmounts[car.fuelType]:
                         self.fuelsAndAmounts[car.fuelType] -= amount
                         car.currentFuelVolume += amount
-                        app.addObject(car)
                     else:
-                        car.fillTheTank(self.fuelsAndAmounts[car.fuelType])
+                        car.currentFuelVolume += self.fuelsAndAmounts[car.fuelType]
                         self.fuelsAndAmounts[car.fuelType] = 0
-                        app.addObject(car)
                 else:
                     amount = car.tankVolume - car.currentFuelVolume
                 if amount <= self.fuelsAndAmounts[car.fuelType]:
                     self.fuelsAndAmounts[car.fuelType] -= amount
                     car.currentFuelVolume += amount
-                    app.addObject(car)
                 else:
                     car.currentFuelVolume += self.fuelsAndAmounts[car.fuelType]
                     self.fuelsAndAmounts[car.fuelType] = 0
-                    app.addObject(car)
             else:
                 messagebox.showerror("Error", "No such fuel")
                 app.addObject(car)
                 return
             self.displayData(self.frame)
+            app.addObject(car)
         else:
             messagebox.showerror("Error", "No cars to refuel")
             return
